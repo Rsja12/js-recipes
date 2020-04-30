@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Rsja12/js-recipes/issues"
   },
-  "homepage": "https://github.com/Rsja12/js-recipes#readme"
+  "homepage": "https://github.com/Rsja12/js-recipes#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  }
 }
