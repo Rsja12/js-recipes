@@ -3,6 +3,10 @@ import { elements } from './base'
 // return value of user input field
 export const getInput = () => elements.searchInput.value 
 
+export const clearInput = () => {
+    elements.searchInput.value = ''
+}
+
 const renderRecipe = recipe => {
 
     const markup = `
