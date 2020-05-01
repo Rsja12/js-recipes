@@ -1,5 +1,4 @@
 import { elements } from './base'
 
-export const getInput = () => {
-
-}
+// return value of user input field
+export const getInput = () => elements.searchInput.value 

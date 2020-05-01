@@ -12,7 +12,7 @@ const state = {}
 
 const controlSearch = async () => {
     // get query from input field
-    const query = 'sushi' //TODO
+    const query = searchView.getInput() 
     if ( query ) {
         // new search obj and add to state
         state.search = new Search(query)
