@@ -12,7 +12,7 @@ const state = {}
 
 const controlSearch = async () => {
     // get query from input field
-    const query = searchView.getInput() 
+    const query = searchView.getInput()
     if ( query ) {
         // new search obj and add to state
         state.search = new Search(query)
@@ -29,4 +29,5 @@ elements.searchForm.addEventListener('submit', e => {
     e.preventDefault()
     controlSearch()
 })
+
 
