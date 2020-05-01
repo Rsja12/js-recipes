@@ -1,0 +1,19 @@
+{
+  "name": "js-recipes",
+  "version": "1.0.0",
+  "description": "recipes project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rsja12/js-recipes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rsja12/js-recipes/issues"
+  },
+  "homepage": "https://github.com/Rsja12/js-recipes#readme"
+}
