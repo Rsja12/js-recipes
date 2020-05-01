@@ -21,7 +21,7 @@ const controlSearch = async () => {
         // Search for recipes and *await*(pause) the app and get the results before using them
         await state.search.getResults()
         // render results on UI 
-        console.log(state.search.results)
+        searchView.renderResults(state.search.results)
     }
 }
 
@@ -30,4 +30,5 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch()
 })
 
+console.log(state)
 
