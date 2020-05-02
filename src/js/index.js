@@ -19,7 +19,7 @@ const controlSearch = async () => {
         // prepare UI for reults..clear input and clear results for next search
         searchView.clearInput()
         searchView.clearResults()
-        renderLoader()
+        renderLoader(elements.searchResultParent)
         // Search for recipes and *await*(pause) the app and get the results before using them
         await state.search.getResults()
         // render results on UI 
