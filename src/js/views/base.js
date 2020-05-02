@@ -22,5 +22,7 @@ export const renderLoader = parent => {
 }
 
 export const clearLoader = () => {
-    const loader = document.querySelector(elementStrings.loader)
+    const loader = document.querySelector(`.${elementStrings.loader}`)
+    // check if this element is present in the DOM. If it is, remove it from the DOM
+    if ( loader ) loader.parentElement.removeChild(loader) 
 }
