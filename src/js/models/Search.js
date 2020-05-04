@@ -4,13 +4,12 @@ import { proxy } from '../config'
 export default class Search {
     constructor(query) {
         this.query = query 
-        this.BASE_URL = 'https://forkify-api.herokuapp.com/api/search?q='
     }
 
     async getResults() {
 
         try {
-            const res = await axios.get(`${this.BASE_URL}${this.query}`)
+            const res = await axios.get(`${proxy}${this.query}`)
             this.results = res.data.recipes
         } 
         catch (error) {
