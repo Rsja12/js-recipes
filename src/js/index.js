@@ -42,7 +42,6 @@ elements.pageBtnParent.addEventListener('click', e => {
         const goToPage = parseInt(btn.dataset.goto)
         searchView.clearResults()
         searchView.renderResults( state.search.results, goToPage )
-        // console.log(goToPage)
     }
 
 })

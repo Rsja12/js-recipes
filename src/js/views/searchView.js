@@ -9,6 +9,7 @@ export const clearInput = () => {
 
 export const clearResults = () => {
     elements.searchResultList.innerHTML = ''
+    elements.pageBtnParent.innerHTML = ''
 }
 
 // algo for limiting title length on UI
