@@ -52,7 +52,12 @@ const renderRecipe = recipe => {
 
 // call renderRecipe for each element in the array of results that we get when user searches 
 export const renderResults = (results, page = 1, resultsPerPage = 10) => {
-    
-    results.forEach( el => renderRecipe(el) )
+    // sets the correct start recipe for each page 
+    const start = (page - 1) * resultsPerPage
+    // sets the correct end recipe for each page 
+    const end = page * resultsPerPage
+
+    // makes a copy of array but only grabs 10 results 
+    results.slice(start, end).forEach( el => renderRecipe(el) )
 }
 
