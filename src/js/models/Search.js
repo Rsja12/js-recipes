@@ -12,7 +12,7 @@ export default class Search {
             const res = await axios.get(`${this.BASE_URL}${this.query}`)
             this.results = res.data.recipes
         } 
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
     
