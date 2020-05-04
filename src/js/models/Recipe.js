@@ -8,7 +8,8 @@ export default class Recipe {
 
     async getRecipe() {
         try {
-            const result = await axios(`${base_url}`)
+            const result = await axios(`${base_url}get?rId=${this.id}`)
+            console.log(result)
         } catch (error){
             console.log(error)
         }
