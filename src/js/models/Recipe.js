@@ -35,13 +35,14 @@ export default class Recipe {
         // array of measurements we want to change
         const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'cup', 'pounds']
         const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup(s)', 'cup(s)', 'pound(s)']
+        const units = [...unitsShort, 'kg', 'g']
 
         const newIngredients = this.ingredients.map( el => {
             // Uniform units of measurement
             let ingredient = el.toLowerCase()
             // Go through long units arr and if it finds a unit we want to replace, replace it with the element at the same position in unitsShort array.
             unitsLong.forEach( (unit, idx) => {
-                ingredient = ingredient.replace( unit, unitsShort[idx] )
+                ingredient = ingredient.replace( unit, units[idx] )
             } )
             // Remove parenthesis
             ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ')
