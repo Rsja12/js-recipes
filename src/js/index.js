@@ -49,9 +49,16 @@ elements.pageBtnParent.addEventListener('click', e => {
 
 
 // RECIPE CONTROLLER 
-const recipe = new Recipe(46956234)
-recipe.getRecipe()
-console.log(recipe)
+
+const controlRecipe
+
+
+
+
+
+
+
+window.addEventListener('hashchange', controlRecipe)
 
 
 
