@@ -21,11 +21,15 @@ const controlSearch = async () => {
         searchView.clearInput()
         searchView.clearResults()
         renderLoader(elements.searchResultParent)
-        // Search for recipes and *await*(pause) the app and get the results before using them
-        await state.search.getResults()
-        // render results on UI 
-        clearLoader()
-        searchView.renderResults(state.search.results)
+        try {
+            // Search for recipes and *await*(pause) the app and get the results before using them
+            await state.search.getResults()
+            // render results on UI 
+            clearLoader()
+            searchView.renderResults(state.search.results)
+        } catch ( error ) {
+            console.log('something went wrong with the search')
+        }
     }
 }
 
@@ -59,13 +63,18 @@ const controlRecipe = async () => {
 
         // Create new recipe obj
         state.recipe = new Recipe(id)
-        // Get recipe data
-        await state.recipe.getRecipe()
-        // Calculate servings and time
-        state.recipe.calcTime()
-        state.recipe.calcServings()
-        // Render the recipe
-        console.log(state.recipe)
+
+        try {
+            // Get recipe data
+            await state.recipe.getRecipe()
+            // Calculate servings and time
+            state.recipe.calcTime()
+            state.recipe.calcServings()
+            // Render the recipe
+            console.log(state.recipe)
+        } catch (error) {
+            console.log('something went wrong')
+        }
     }
 
 }
