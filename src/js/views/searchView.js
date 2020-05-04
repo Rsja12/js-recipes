@@ -57,7 +57,7 @@ export const renderResults = (results, page = 1, resultsPerPage = 10) => {
     // sets the correct end recipe for each page 
     const end = page * resultsPerPage
 
-    // makes a copy of array but only grabs 10 results 
+    // makes a copy of array but only grabs the correct 10 results 
     results.slice(start, end).forEach( el => renderRecipe(el) )
 }
 
