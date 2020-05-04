@@ -28,9 +28,23 @@ const controlSearch = async () => {
     }
 }
 
+// search submit
 elements.searchForm.addEventListener('submit', e => {
     e.preventDefault()
     controlSearch()
+})
+
+// search page buttons
+elements.pageBtnParent.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline')
+    
+    if ( btn ) {
+        const goToPage = parseInt(btn.dataset.goto)
+        searchView.clearResults()
+        searchView.renderResults( state.search.results, goToPage )
+        // console.log(goToPage)
+    }
+
 })
 
 console.log(state)
