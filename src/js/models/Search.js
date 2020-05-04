@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { proxy } from '../config'
+import { base_url } from '../config'
 
 export default class Search {
     constructor(query) {
@@ -9,7 +9,7 @@ export default class Search {
     async getResults() {
 
         try {
-            const res = await axios.get(`${proxy}${this.query}`)
+            const res = await axios.get(`${base_url}search?q=${this.query}`)
             this.results = res.data.recipes
         } 
         catch (error) {

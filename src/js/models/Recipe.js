@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { base_url } from '../config'
 
 export default class Recipe {
     constructor(id) {
@@ -7,7 +8,7 @@ export default class Recipe {
 
     async getRecipe() {
         try {
-            const result = await axios()
+            const result = await axios(`${base_url}`)
         } catch (error){
             console.log(error)
         }
