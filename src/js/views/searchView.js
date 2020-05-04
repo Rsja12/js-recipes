@@ -51,6 +51,8 @@ const renderRecipe = recipe => {
 }
 
 // call renderRecipe for each element in the array of results that we get when user searches 
-export const renderResults = results => {
+export const renderResults = (results, page = 1, resultsPerPage = 10) => {
+    
     results.forEach( el => renderRecipe(el) )
 }
+
