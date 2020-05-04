@@ -53,9 +53,9 @@ const renderRecipe = recipe => {
 const createButton = (page, type) => `
     <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}
         <svg class="search__icon">
-            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? left : right}"></use>
+            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
         </svg>
-        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+        <span>${type === 'prev' ? 'prev' : 'next'}</span>
     </button>
 `
 
@@ -75,6 +75,8 @@ const renderButtons = (page, numResults, resultsPerPage) => {
         button = createButton(page, 'prev')
     }
 
+    // add page buttons
+    elements.pageBtnParent.insertAdjacentHTML('afterbegin', button)
 }
 
 // call renderRecipe for each element in the array of results that we get when user searches 
@@ -86,5 +88,7 @@ export const renderResults = (results, page = 1, resultsPerPage = 10) => {
 
     // makes a copy of array but only grabs the correct 10 results 
     results.slice(start, end).forEach( el => renderRecipe(el) )
+
+    renderButtons(page, results.length, resultsPerPage)
 }
 
