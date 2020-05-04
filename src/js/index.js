@@ -29,6 +29,7 @@ const controlSearch = async () => {
             searchView.renderResults(state.search.results)
         } catch ( error ) {
             console.log('something went wrong with the search')
+            clearLoader()
         }
     }
 }
@@ -63,7 +64,7 @@ const controlRecipe = async () => {
 
         // Create new recipe obj
         state.recipe = new Recipe(id)
-
+        window.r = state.recipe
         try {
             // Get recipe data
             await state.recipe.getRecipe()
