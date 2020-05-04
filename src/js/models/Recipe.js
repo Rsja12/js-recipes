@@ -34,7 +34,7 @@ export default class Recipe {
     parseIngredients() {
         // array of measurements we want to change
         const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds']
-        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound']
+        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup(s)', 'pound(s)']
 
         const newIngredients = this.ingredients.map( el => {
             // Uniform units of measurement
@@ -45,8 +45,44 @@ export default class Recipe {
             } )
             // Remove parenthesis
             ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ')
+
             // Parse ingredients into count unit and ingredient
-            return ingredient
+            const ingredientArr = ingredient.split(' ')
+            const unitIdx = ingredientArr.findIndex( el => unitsShort.includes(el) )
+
+            let ingredientObj
+            if ( unitIdx > -1 ) {
+
+                const arrCount = ingredientArr.slice(0, unitIdx)
+                let count = 0
+                if ( arrCount.length === 1 ) {
+                    count = eval( ingredientArr[0].replace( '-', '+' ) )
+                } else {
+                    count = eval( ingredientArr.slice(0, unitIdx).join('+') )
+                }
+
+                ingredientObj = {
+                    count,
+                    unit: ingredientArr[unitIdx],
+                    ingredient: ingredientArr.slice( unitIdx + 1 ).join(' ')
+                }
+
+            } else if ( parseInt(ingredientArr[0]) ) {
+                // There is no unit but there is a num
+                ingredientObj = {
+                    count: parseInt(ingredientArr[0]),
+                    unit: '',
+                    ingredient: ingredientArr.slice(1).join(' ')
+                }
+
+            } else if ( unitIdx === -1 ) {
+                // There is no unit and no number in first position
+                ingredientObj = {
+                    ingredient
+                }
+            }
+
+            return ingredientObj
         } )
         this.ingredients = newIngredients
     }
