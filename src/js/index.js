@@ -50,15 +50,32 @@ elements.pageBtnParent.addEventListener('click', e => {
 
 // RECIPE CONTROLLER 
 
-const controlRecipe
+const controlRecipe = async () => {
+    // grabs the hash from the url and removes the # from the number
+    const id = window.location.hash.replace('#', '')
+    
+    if ( id ) {
+        // Prepare UI for changes
+
+        // Create new recipe obj
+        state.recipe = new Recipe(id)
+        // Get recipe data
+        await state.recipe.getRecipe()
+        // Calculate servings and time
+        state.recipe.calcTime()
+        state.recipe.calcServings()
+        // Render the recipe
+        console.log(state.recipe)
+    }
+
+}
 
 
 
 
 
-
-
-window.addEventListener('hashchange', controlRecipe)
+// Call the same function on different events
+['hashchange', 'load'].forEach( e => window.addEventListener(e, controlRecipe) )
 
 
 
