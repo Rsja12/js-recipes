@@ -50,6 +50,33 @@ const renderRecipe = recipe => {
 
 }
 
+const createButton = (page, type) => `
+    <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}
+        <svg class="search__icon">
+            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? left : right}"></use>
+        </svg>
+        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+    </button>
+`
+
+const renderButtons = (page, numResults, resultsPerPage) => {
+    // calculates the num of pages needed by rounding up if num is float 
+    const pages = Math.ceil(numResults / resultsPerPage)
+    
+    let button
+    if ( page === 1 && pages > 1 ) {
+        button = createButton(page, 'next')
+    } else if ( page < pages ) {
+        button = `
+            ${createButton(page, 'next')}
+            ${createButton(page, 'prev')}
+        `
+    } else if (page === pages && pages > 1 ) {
+        button = createButton(page, 'prev')
+    }
+
+}
+
 // call renderRecipe for each element in the array of results that we get when user searches 
 export const renderResults = (results, page = 1, resultsPerPage = 10) => {
     // sets the correct start recipe for each page 
